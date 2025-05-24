@@ -1,0 +1,85 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.34.88.15454",
+      "templateHash": "124997768550104697"
+    },
+    "info": {
+      "title": "Local Deployment Main bicep file",
+      "description": "Local deployment bicep file for creating specific resources",
+      "version": "1.0.0",
+      "author": "3fifty"
+    },
+    "description": "Module for creating specific resources by using bicep local.\r\n"
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "descriptive name for the resources"
+      }
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "location for the resources"
+      }
+    },
+    "env": {
+      "type": "string",
+      "defaultValue": "dev",
+      "allowedValues": [
+        "dev",
+        "tst",
+        "prd"
+      ],
+      "metadata": {
+        "description": "environment of the resources"
+      }
+    }
+  },
+  "extensions": {
+    "az0synthesized": {
+      "name": "LocalNested",
+      "version": "0.0.0"
+    }
+  },
+  "resources": {
+    "storageAccount": {
+      "extension": "az0synthesized",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "subscriptionId": "test",
+        "resourceGroup": "",
+        "name": "[format('storageAccount-{0}', uniqueString('storageAccount', deployment().name))]",
+        "parameters": {
+          "name": {
+            "value": "[parameters('name')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "env": {
+            "value": "[parameters('env')]"
+          }
+        },
+        "template": "{\"$schema\":\"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#\",\"contentVersion\":\"1.0.0.0\",\"metadata\":{\"_generator\":{\"name\":\"bicep\",\"version\":\"0.34.88.15454\",\"templateHash\":\"6026131738779960280\"},\"info\":{\"title\":\"Storage Account Module\",\"description\":\"Module for setting up a Storage Account component\",\"version\":\"1.0.0\",\"author\":\"3fifty\"},\"description\":\"Module for creating a new Storage Account instance.\\r\\n\"},\"parameters\":{\"name\":{\"type\":\"string\",\"metadata\":{\"description\":\"descriptive name for the storage account\"}},\"location\":{\"type\":\"string\",\"defaultValue\":\"[resourceGroup().location]\",\"metadata\":{\"description\":\"location for the storage account\"}},\"env\":{\"type\":\"string\",\"defaultValue\":\"dev\",\"allowedValues\":[\"dev\",\"tst\",\"prd\"],\"metadata\":{\"description\":\"environment for the storage account\"}}},\"variables\":{\"storageName\":\"[toLower(format('st{0}{1}', take(replace(parameters('name'), '-', ''), 19), parameters('env')))]\"},\"resources\":[{\"type\":\"Microsoft.Storage/storageAccounts\",\"apiVersion\":\"2024-01-01\",\"name\":\"[variables('storageName')]\",\"location\":\"[parameters('location')]\",\"kind\":\"StorageV2\",\"sku\":{\"name\":\"Standard_LRS\"},\"properties\":{\"supportsHttpsTrafficOnly\":true,\"minimumTlsVersion\":\"TLS1_2\"}}],\"outputs\":{\"storageId\":{\"type\":\"string\",\"value\":\"[resourceId('Microsoft.Storage/storageAccounts', variables('storageName'))]\"},\"storageName\":{\"type\":\"string\",\"value\":\"[variables('storageName')]\"}}}",
+        "sourceUri": "file:///D:/src/github/msft-bicep-local/modules/azure/storage.bicep"
+      }
+    }
+  },
+  "outputs": {
+    "storageId": {
+      "type": "string",
+      "value": "[reference('storageAccount').outputs.storageId.value]"
+    },
+    "storageName": {
+      "type": "string",
+      "value": "[reference('storageAccount').outputs.storageName.value]"
+    }
+  }
+}
