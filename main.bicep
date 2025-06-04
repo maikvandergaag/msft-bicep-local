@@ -1,3 +1,9 @@
+targetScope = 'local'
+
+import { gitHubRepo } from './utility/types.bicep'
+
+extension az
+extension local
 
 metadata info = {
   title: 'Local Deployment Main bicep file'
@@ -7,31 +13,49 @@ metadata info = {
 }
 
 metadata description = '''
-Module for creating specific resources by using bicep local.
+Main file for creating specific resources by using bicep local.
 '''
 
-@description('descriptive name for the resources')
+@description('Descriptive name for the Azure resources')
 param name string
 
-@description('location for the resources')
-param location string
+@description('The GitHub user to retrieve the auth token for when having multiple tokens set')
+param gitHubUser string = ''
 
-@allowed([
-  'dev'
-  'tst'
-  'prd'
-])
-@description('environment of the resources')
-param env string = 'dev'
+@description('The information about the GitHub repository to create')
+param repo gitHubRepo
 
+param azureResourceGroup {
+  name: string
+  location: string
+  subscriptionId: string
+}
 
-module storageAccount 'modules/azure/storage.bicep' = {
+module gitToken '.modules/script/get-local-token.bicep' ={
+  name: 'get-github-auth-token'
   params: {
-    name: name
-    location: location
-    env: env
+    username: gitHubUser
   }
 }
 
-output storageId string = storageAccount.outputs.storageId
-output storageName string = storageAccount.outputs.storageName
+module github './github/github.bicep' = {
+  name: 'deploy-github-repo'
+  params: {
+    githubToken:  gitToken.outputs.token
+    repo: repo
+    azureInfo: azure.outputs.oidcConfig
+  }
+}
+
+module azure './azure/azure.bicep' = {
+  scope: subscription(azureResourceGroup.subscriptionId)
+  params: {
+    name: name
+    repo: repo
+    azureResourceGroup: {
+      name: azureResourceGroup.name
+      location:azureResourceGroup.location
+      subscriptionId: azureResourceGroup.subscriptionId
+    }
+  }
+}

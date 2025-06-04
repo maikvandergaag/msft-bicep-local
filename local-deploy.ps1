@@ -2,4 +2,4 @@
 
 
 # Running Bicep Local Deploy
-bicep local-deploy .\local.bicepparam
+bicep local-deploy .\main.bicepparam

@@ -1,3 +1,5 @@
+extension az
+
 metadata info = {
   title: 'Storage Account Module'
   description: 'Module for setting up a Storage Account component'
