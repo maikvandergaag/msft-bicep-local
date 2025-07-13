@@ -8,7 +8,6 @@ type gitHubRepo = {
   collaborators: string[]
 }
 
-@secure()
 @export()
 type azureOidc = {
   tenantId: string

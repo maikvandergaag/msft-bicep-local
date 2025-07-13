@@ -48,6 +48,7 @@ module github './github/github.bicep' = {
 }
 
 module azure './azure/azure.bicep' = {
+  name: 'deploy-bicep-local'
   scope: subscription(azureResourceGroup.subscriptionId)
   params: {
     name: name

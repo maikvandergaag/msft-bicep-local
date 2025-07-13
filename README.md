@@ -9,6 +9,15 @@ This repository demonstrates local Bicep deployments and configuration for secur
 - No direct connection with the internet is required for deployments.
 - Uses local and private Bicep extensibility features.
 
+## Deployment
+
+To deploy this setup with the bicep local deploy option use the following snippet.
+
+```bash
+bicep local-deploy .\main.bicepparam
+```
+
+
 ## Bicep Configuration Example
 
 Below is a sample `bicepconfig.json` with all available analyzer rules set to `error` for maximum code quality enforcement:
@@ -78,6 +87,21 @@ iex "& { $(irm https://aka.ms/bicep/nightly-vsix.ps1) }"
 
 Follow this link and select the appropriate build:  
 https://github.com/Azure/bicep/actions/workflows/build.yml?query=branch%3Amain+is%3Asuccess
+
+
+## Tracing
+
+Perform the following command to enable tracing
+
+**cmd**
+```
+set BICEP_TRACING_ENABLED=true
+```
+
+**powershell**
+```
+$env:BICEP_TRACING_ENABLED=$true
+```
 
 ---
 
