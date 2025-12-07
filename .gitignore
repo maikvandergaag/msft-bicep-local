@@ -12,6 +12,8 @@ local-secure.bicepparam
 *.userosscache
 *.sln.docstates
 
+demo/get-started/extension-publish/*
+demo/extension/extension-publish/*
 demo/get-started/*
 !demo/get-started/.gitkeep
 !demo/get-started/bicep/.
