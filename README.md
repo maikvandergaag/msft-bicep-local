@@ -22,7 +22,7 @@ bicep local-deploy .\main.bicepparam
 
 Below is a sample `bicepconfig.json` with all available analyzer rules set to `error` for maximum code quality enforcement:
 
-```jsonc
+```json
 {
   "experimentalFeaturesEnabled": {
     "localDeploy": true

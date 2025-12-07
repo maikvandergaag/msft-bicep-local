@@ -13,7 +13,7 @@
     "http": "br:bicepextdemo.azurecr.io/extensions/http:0.1.1",
     "local": "br:bicepextdemo.azurecr.io/extensions/local:0.1.4",
     "github": "br:bicepextdemo.azurecr.io/extensions/github:0.1.7",
-    "httplocal": "/extension/extension-publish/bicep-demo-ext-http",
+    "httplocal": "./extension-publish/bicep-demo-ext-http",
     "httpRegistry": "br:bicepextdemo.azurecr.io/extensions/bicep-demo-ext-http:v1.0.0",
     "msGraph": "br:azcrbicepregistryiacprd.azurecr.io/extension/microsoftgraph/v1.0:0.1.8-preview"
   },

@@ -12,6 +12,11 @@ local-secure.bicepparam
 *.userosscache
 *.sln.docstates
 
+demo/get-started/*
+!demo/get-started/.gitkeep
+!demo/get-started/bicep/.
+!demo/get-started/bicepconfig.json
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
