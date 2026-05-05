@@ -25,7 +25,7 @@ resource repository 'Repository' = {
 resource collaborators 'Collaborator' = [
   for user in repo.collaborators: {
     owner: repo.organization
-    repo: repo.name
+    repo: repository.name
     user: user
     permission: 'write'
   }
@@ -33,7 +33,7 @@ resource collaborators 'Collaborator' = [
 
 resource tenantIdSecret 'ActionsSecret' = {
   owner: repo.owner
-  repo: repo.name
+  repo: repository.name
   name: 'AZURE_TENANT_ID'
   #disable-next-line use-secure-value-for-secure-inputs
   value: azureInfo.tenantId
@@ -41,7 +41,7 @@ resource tenantIdSecret 'ActionsSecret' = {
 
 resource subscriptionIdSecret 'ActionsSecret' = {
   owner: repo.owner
-  repo: repo.name
+  repo: repository.name
   name: 'AZURE_SUBSCRIPTION_ID'
   #disable-next-line use-secure-value-for-secure-inputs
   value: azureInfo.subscriptionId
@@ -49,7 +49,7 @@ resource subscriptionIdSecret 'ActionsSecret' = {
 
 resource clientIdSecret 'ActionsSecret' = {
   owner: repo.owner
-  repo: repo.name
+  repo: repository.name
   name: 'AZURE_CLIENT_ID'
   #disable-next-line use-secure-value-for-secure-inputs
   value: azureInfo.clientId

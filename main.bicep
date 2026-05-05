@@ -9,7 +9,7 @@ metadata info = {
   title: 'Local Deployment Main bicep file'
   description: 'Local deployment bicep file for creating specific resources'
   version: '1.0.0'
-  author: '3fifty'
+  author: 'Databalance'
 }
 
 metadata description = '''
