@@ -4,7 +4,7 @@ using './main.bicep'
 param gitHubUser = 'maikvandergaag'
 
 param repo = {
-  name: 'bicep-local-repo'
+  name: 'bicep-local-repo-ecs2026'
   collaborators:[]
   owner: 'maikvandergaag'
   organization: 'maikvandergaag'
@@ -15,7 +15,7 @@ param repo = {
 param azureResourceGroup = {
   name: 'sponsor-rg-bicep-local'
   location: 'westeurope'
-  subscriptionId: 'f124b668-7e3d-4b53-ba80-09c364def1f3'
+  subscriptionId: 'a61be14b-136e-44e9-a88e-187fa0384d06'
 }
 
 param name = 'bicep-local'

@@ -15,5 +15,5 @@ dotnet new install Bicep.Extension.Templates
 Create a new Bicep extension project using the template:
 
 ```powershell
-dotnet new bicepext -n MyBicepExtension -extension MyBicepExtension
+dotnet new bicep-extension -n MyBicepExtension -extension MyBicepExtension
 ```

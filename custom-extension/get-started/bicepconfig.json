@@ -9,7 +9,7 @@
     "currentProfile": "AzureCloud"
   },
   "extensions": {
-    "apexxldemo": "./extension-publish/apexxldemo"
+    "ecs": "./extension-publish/ecs2026"
   },
   "implicitExtensions": []
 }
